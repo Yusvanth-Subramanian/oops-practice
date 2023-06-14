@@ -1,17 +1,48 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
+class Vehicle{
+
+    public void type(){
+        System.out.println("Vehicle");
+    }
+
+    public void name(){
+        System.out.println("Vehicle");
+    }
+}
+
+class Bike extends Vehicle{
+
+    public void type(){
+        System.out.println("Bike");
+    }
+
+    public void name(){
+        System.out.println("Royal Enfield");
+    }
+}
+
+class Car extends Vehicle{
+
+    public void type(){
+        System.out.println("Car");
+    }
+
+    public void name(){
+        System.out.println("Virtus");
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
-        // Press Opt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Ctrl+R or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Ctrl+D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Cmd+F8.
-            System.out.println("i = " + i);
-        }
+        Vehicle v = new Vehicle();
+        v.name();
+        v.type();
+        Vehicle b = new Bike();
+        b.name();
+        b.type();
+        Vehicle c = new Car();
+        c.type();
+        c.name();
     }
 }
