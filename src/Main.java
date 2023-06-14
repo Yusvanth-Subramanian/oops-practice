@@ -1,17 +1,40 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Opt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        String input = ReadInput.read();
+        Queue<String> operations;
+        Queue<String> numbers;
+        String numArr[]=input.split("[-+*/]");
+        String opArr[]=input.split("[0-9]+");
+        numbers=new LinkedList<>(Arrays.asList(numArr));
+        operations = new LinkedList<>(Arrays.asList(opArr));
 
-        // Press Ctrl+R or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Ctrl+D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Cmd+F8.
-            System.out.println("i = " + i);
+        Double res= Double.parseDouble(numbers.poll());
+        while (!numbers.isEmpty()){
+            String op = operations.poll();
+            Operate operate;
+            switch (op){
+                case "+":
+                    operate=new Add();
+                    break;
+                case "-":
+                    operate=new Subtract();
+                    break;
+                case "*":
+                    operate = new Multiply();
+                    break;
+                case "/":
+                    operate=new Divide();
+                    break;
+                default:
+                    continue;
+            }
+            Double num = Double.parseDouble(numbers.poll());
+            res=operate.getResult(res,num);
         }
+        System.out.println(res);
     }
 }
